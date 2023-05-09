@@ -18,9 +18,20 @@ public class URLBloqueada implements URLBloqueadaInterfaz{
   protected final String sampleFile = "http://trajano.us.es:80/graficos/esi.gif";
   private URL URLBloqueada ;
 
+  /**
+   * Constructor de la clase URLBloqueada que da un valor por defecto
+   * @param protocolo Protocolo de la URL bloqueada
+   * @param maquina Maquina de la URL bloqueada
+   * @param puerto Puerto de entrada de la URL bloqueada
+   * @param archivo Archivo de la URL bloqueada
+   */
   public URLBloqueada(String protocolo, String maquina, int puerto, String archivo){
-    
+    this.protocolo = protocolo;
+    this.maquina = maquina;
+    this.puerto = puerto;
+    this.archivo = archivo;
   }
+
   /**
    * Metodo que define una URL bloqueada a partir de un objeto
    * de tipo URL 
@@ -30,6 +41,7 @@ public class URLBloqueada implements URLBloqueadaInterfaz{
   public void setURLBloqueada(URL urlBloqueada){
     this.urlBloqueada = urlBloqueada;
   }
+  
   /**
    * Método que define una URL bloqueada
    * @param urlBloqueada La URL a bloquear
@@ -42,6 +54,7 @@ public class URLBloqueada implements URLBloqueadaInterfaz{
       throw new MalformedURLException("La URL no tenía la el formato correcto");
     }
   }
+  
   /**
    * Método que devuelve la url bloqueada como cadena
    * @return String
@@ -49,6 +62,7 @@ public class URLBloqueada implements URLBloqueadaInterfaz{
   public String getURLBloqueada(){
     return this.URLBloqueada.getHost();
   }
+  
   /**
    * Método que devuelve la URL bloqueada como objeto
    * @return URL
