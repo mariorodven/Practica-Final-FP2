@@ -18,6 +18,17 @@ public class Solicitud {
   
   private URL urlSoicitud = new URL("us.es");
   
+  public Solicitud(int numEntrada, int puerto, String protocolo, String maquina, String recurso, String objeto){
+    //Asignacion por defecto
+    this.numEntrada=numEntrada;
+    this.puerto=puerto;
+    this.protocolo=protocolo;
+    this.maquina=maquina;
+    this.recurso = recurso;
+    this.objeto = objeto
+  
+  }
+
   public URL getURL(){
     return this.urlSoicitud;
   }

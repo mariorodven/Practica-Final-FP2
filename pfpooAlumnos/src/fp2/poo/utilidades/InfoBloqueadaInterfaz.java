@@ -20,5 +20,7 @@ import fp2.poo.utilidades.InfoInterfaz;
  * @author  Fundamentos de Programacion II
  */
 public interface InfoBloqueadaInterfaz  extends InfoInterfaz{
-
+  public void setUrlBloqueada(URL urlBloqueada){
+    
+  }
 }
