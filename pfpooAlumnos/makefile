@@ -56,7 +56,7 @@ OPCIONES = -Xlint -encoding ISO-8859-1 -classpath ./bin  -cp ./bin -d ./bin
                          ./src/fp2/poo/utilidades/LecturaSolicitudesDeEntrada.java
 	javac $(OPCIONES)    ./src/fp2/poo/utilidades/LecturaSolicitudesDeEntrada.java
 
-./bin/fp2/poo/pfpNVT2454/RecursoLocal.class: ./bin/fp2/poo/pfpoofp2/InfoRecursoLocal.class \
+./bin/fp2/poo/pfpNVT2454/RecursoLocal.class: ./bin/fp2/poo/pfpNVT2454/InfoRecursoLocal.class \
                           ./src/fp2/poo/pfpNVT2454/RecursoLocal.java
 	javac $(OPCIONES)     ./src/fp2/poo/pfpNVT2454/RecursoLocal.java
 

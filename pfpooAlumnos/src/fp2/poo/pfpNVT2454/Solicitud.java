@@ -1,4 +1,5 @@
 package fp2.poo.pfpNVT2454;
+import fp2.poo.utilidades.SolicitudInterfaz;
 import java.net.URL;
 
 /**
@@ -8,34 +9,35 @@ import java.net.URL;
  * @version version 1.1 Mayo 2023
  * @author  Mario Rodríguez Ventura
  */
-public class Solicitud {
+public class Solicitud implements SolicitudInterfaz {
   
-  private int numEntrada=0;
+  private int numEntrada;
   private int puerto; //Usualmente 443 o 80
   
   private String protocolo;
   private String maquina; //Por ejemplo www.us.es
-  private String recurso;
   private String objeto;
 
+  private String directorio;
+  private String recurso;
   //URL(String protocol, String host, int port, String file)
-  private URL urlSoicitud = new URL(protocolo, maquina, puerto, recurso);
+  private URL urlSoicitud ;
   
   /**
    * Constructor de la clase Solicitud
+   * @param numEntrada Es un numero secuencial que identifica la solicitud
    * @param puerto El puerto de entrada de la Solicitud
    * @param protocolo Protocolo de la solicitud(http, https)
    * @param maquina El host, puede ser por ejemplo www.us.es
-   * @param recurso El recurso de solicitud del Proxy
-   * @param onjeto Fichero de solicitud del Proxy
+   * @param directorio Direccion del fichero
    */
-  public Solicitud(int numEntrada, int puerto, String protocolo, String maquina, String recurso, String objeto){
+  public Solicitud(int numEntrada, String protocolo, String maquina, int puerto, String objeto){
     //Asignacion por defecto
-    this.puerto=puerto;
+    this.numEntrada=numEntrada;
     this.protocolo=protocolo;
     this.maquina=maquina;
-    this.recurso = recurso;
-    this.objeto = objeto;  
+    this.puerto=puerto;
+    this.objeto=objeto;
   }
   
   /**

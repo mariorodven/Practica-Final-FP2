@@ -15,15 +15,6 @@ public class Info implements InfoInterfaz{
   private int numAccesos;
 
   /**
-   * Constructor de la clase Info, que le da un valos inicial al 
-   * único atributo, el cual es numAccesos
-   * @param numAccesos Valor inicial para el numero de accesos del proxy
-   */
-  public Info(int numAccesos){
-    this.numAccesos=numAccesos;
-  }
-
-  /**
    * Método que da un valor a numAccesos
    * @return void
    * @param numAccesos El numero de numAccesos

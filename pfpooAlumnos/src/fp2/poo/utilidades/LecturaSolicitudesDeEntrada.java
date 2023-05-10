@@ -19,7 +19,7 @@ import fp2.poo.utilidades.SolicitudInterfaz;
 /*
  * La clase URLBloqueada debe importarla de fp2.poo.pfpooXXX, siendo XXX el uvus del alumno.
  */
-import fp2.poo.pfpoofp2.Solicitud;
+import fp2.poo.pfpNVT2454.Solicitud;
 
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
