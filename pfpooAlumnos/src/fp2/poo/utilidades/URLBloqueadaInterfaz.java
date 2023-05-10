@@ -42,5 +42,5 @@ public interface URLBloqueadaInterfaz extends InfoBloqueadaInterfaz {
 	/*
 	 * Este metodo devuelve como objeto del tipo URL un recurso.
 	 */		
-    public URL    getURLBloquedaAsObject();	
+    public URL    getURLBloqueadaAsObject();	
 }

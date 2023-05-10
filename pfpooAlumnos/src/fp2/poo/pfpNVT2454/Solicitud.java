@@ -35,7 +35,7 @@ public class Solicitud {
     this.protocolo=protocolo;
     this.maquina=maquina;
     this.recurso = recurso;
-    this.objeto = objeto  
+    this.objeto = objeto;  
   }
   
   /**

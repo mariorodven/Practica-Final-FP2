@@ -1,6 +1,6 @@
 package fp2.poo.pfpNVT2454;
 
-import fp2.poo.utilidades.InfoBloqueadaInterfaz;
+import fp2.poo.utilidades.*;
 import java.net.URL;
 
 /**
@@ -13,17 +13,6 @@ public class InfoBloqueada implements InfoBloqueadaInterfaz{
   
   private int numAccesos;
   private URL urlBloqueada;
-  
-  /**
-   * Constructor de la clase InfoBloqueada, le da un valor inicial 
-   * a los atributos de la clase
-   * @param URLBloqueada valor inicial para la URLBloqueada
-   * @param numAccesos valor inicial para el numero de accesos
-   */
-  public InfoBloqueada(URL URLBloqueada, int numAccesos){
-    this.numAccesos = numAccesos;
-    this.urlBloqueada = URLBloqueada;
-  }
   
   /**
    * Método que fija un valor para numAccesos 

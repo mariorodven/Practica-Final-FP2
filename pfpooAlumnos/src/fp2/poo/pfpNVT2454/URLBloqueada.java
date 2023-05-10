@@ -1,9 +1,6 @@
 package fp2.poo.pfpNVT2454;
 
-import java.net.URL;
-import java.net.MalformedURLException;
-
-import fp2.poo.utilidades.InfoBloqueadaInterfaz;
+import java.net.*;
 import fp2.poo.utilidades.URLBloqueadaInterfaz;
 
 /**
@@ -12,7 +9,7 @@ import fp2.poo.utilidades.URLBloqueadaInterfaz;
  * @author Mario Rodríguez Ventura
  * @version versión 6.9 Mayo 2023
  */
-public class URLBloqueada implements URLBloqueadaInterfaz{
+public class URLBloqueada extends InfoBloqueada implements URLBloqueadaInterfaz{
   
   //URL(String protocol, String host, int port, String file)
   protected final String sampleFile = "http://trajano.us.es:80/graficos/esi.gif";
@@ -20,39 +17,23 @@ public class URLBloqueada implements URLBloqueadaInterfaz{
 
   /**
    * Constructor de la clase URLBloqueada que da un valor por defecto
-   * @param protocolo Protocolo de la URL bloqueada
-   * @param maquina Maquina de la URL bloqueada
-   * @param puerto Puerto de entrada de la URL bloqueada
    * @param archivo Archivo de la URL bloqueada
    */
-  public URLBloqueada(String protocolo, String maquina, int puerto, String archivo){
-    this.protocolo = protocolo;
-    this.maquina = maquina;
-    this.puerto = puerto;
-    this.archivo = archivo;
+  public URLBloqueada(String url){
+    try {
+      this.setURLBloqueada(url);
+    } catch (Exception e) {
+      System.err.println(e);
+    }
   }
 
-  /**
-   * Metodo que define una URL bloqueada a partir de un objeto
-   * de tipo URL 
-   * @param urlBloqueada La URL a bloquear
-   * @return void
-   */
-  public void setURLBloqueada(URL urlBloqueada){
-    this.urlBloqueada = urlBloqueada;
-  }
-  
   /**
    * Método que define una URL bloqueada
    * @param urlBloqueada La URL a bloquear
    * @return void
    */
-  public void setURLBloqueada( String url ) throws MalformedURLException(){
-    try {
-      this.urlBloqueada = new URL(url);
-    } catch (Exception e) {
-      throw new MalformedURLException("La URL no tenía la el formato correcto");
-    }
+  public void setURLBloqueada( String url ) throws MalformedURLException{
+    this.URLBloqueada = new URL(url);
   }
   
   /**
