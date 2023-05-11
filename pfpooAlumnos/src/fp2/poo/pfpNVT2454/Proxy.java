@@ -15,6 +15,9 @@ import java.io.BufferedInputStream;
 import java.io.OutputStream;
 import java.io.FileOutputStream;
 
+import java.util.Collections;
+import java.util.Comparator;
+
 public class Proxy extends ProxyAbstracta{
   
   private List<URLBloqueadaInterfaz> urlbloqueadas = new ArrayList<URLBloqueadaInterfaz>();
@@ -41,6 +44,7 @@ public class Proxy extends ProxyAbstracta{
   }
 
   public void ordenarRecursorPorAccesos(){
-    
+    SolicitudComparator solicitudComparator = new SolicitudComparator();
+    Collections.sort(solicitudes, solicitudComparator);
   }
 }
