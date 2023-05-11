@@ -9,7 +9,7 @@ import fp2.poo.utilidades.ProxyAbstracta;
  * por  import fp2.poo.pfpooXXX.Proxy;
  * siendo XXX el uvus del alumno
  */
-import fp2.poo.pfpoofp2.Proxy;
+import fp2.poo.pfpNVT2454.Proxy;
 
 
 import java.net.URL;

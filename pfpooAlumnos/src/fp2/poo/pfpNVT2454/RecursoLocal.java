@@ -1,7 +1,7 @@
 package fp2.poo.pfpNVT2454;
 
 import fp2.poo.utilidades.InfoRecursoLocalInterfaz;
-import java.net.URL;
+
 
 /**
  * Descripcion: Esta es la clase que contiene los métodos
@@ -10,7 +10,7 @@ import java.net.URL;
  * @version Versión 1.1 Mayo 2023
  * @author  Mario Rodríguez Ventura
  */
-public class RecursoLocal implements InfoRecursoLocalInterfaz{
+public class RecursoLocal implements InfoRecursoLocalInterfaz, Comparable<RecursoLocal>{
   
   private int numAccesos;
   private int numBytes;

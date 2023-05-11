@@ -1,7 +1,7 @@
 package fp2.poo.pfpNVT2454;
 
 import fp2.poo.utilidades.InfoInterfaz;
-import java.net.URL;
+    
 
 /**
  * Descripción: Esta clase contiene los get/set 

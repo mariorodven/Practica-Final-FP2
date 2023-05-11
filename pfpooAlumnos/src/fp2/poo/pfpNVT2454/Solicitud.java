@@ -148,5 +148,4 @@ public class Solicitud implements SolicitudInterfaz {
   public String getObjeto(){
     return this.objeto;
   }
-
 }

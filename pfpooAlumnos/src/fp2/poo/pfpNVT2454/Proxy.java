@@ -1,9 +1,11 @@
 package fp2.poo.pfpNVT2454;
 
+import fp2.poo.utilidades.LecturaConfiguracion;
 import fp2.poo.utilidades.ProxyAbstracta;
-
+import fp2.poo.utilidades.RecursoLocalInterfaz;
 import fp2.poo.utilidades.Excepciones.OperacionNoPermitidaExcepcion;
 import fp2.poo.utilidades.SolicitudInterfaz;
+import fp2.poo.utilidades.URLBloqueadaInterfaz;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -15,8 +17,10 @@ import java.io.BufferedInputStream;
 import java.io.OutputStream;
 import java.io.FileOutputStream;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class Proxy extends ProxyAbstracta{
   
@@ -41,10 +45,17 @@ public class Proxy extends ProxyAbstracta{
   public void muestraURLBloqueadas(){
 
   }
+  public void muestraSolicitudes(){
+
   }
 
-  public void ordenarRecursorPorAccesos(){
-    SolicitudComparator solicitudComparator = new SolicitudComparator();
-    Collections.sort(solicitudes, solicitudComparator);
+  public void muestraRecursos(){
+
   }
+
+  public void ordenarRecursosPorAccesos(){
+    
+  }
+
+
 }
