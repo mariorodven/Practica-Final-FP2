@@ -5,8 +5,7 @@ import java.util.Comparator;
 import fp2.poo.utilidades.RecursoLocalInterfaz;
 
 public class OrdenacionRecursosPorAccesos implements Comparator<RecursoLocalInterfaz> {
-  public int compare(RecursoLocalInterfaz r1, RecursoLocalInterfaz r2) {
-    return r1.compareTo(r2);
-	
+  public int compare(RecursoLocalInterfaz o1, RecursoLocalInterfaz o2) {
+    return Integer.compare(o1.getNumAccesos(), o2.getNumAccesos());	
   }
 }

@@ -1,5 +1,7 @@
 package fp2.poo.pfpNVT2454;
 import fp2.poo.utilidades.SolicitudInterfaz;
+
+import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -38,6 +40,11 @@ public class Solicitud implements SolicitudInterfaz {
     this.maquina=maquina;
     this.puerto=puerto;
     this.objeto=objeto;
+    try {
+      this.urlSoicitud=new URL(protocolo, maquina, puerto, objeto);
+    } catch (MalformedURLException e) {
+      System.out.println(e);
+    }
   }
   
   /**

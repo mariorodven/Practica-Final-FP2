@@ -10,7 +10,7 @@ import fp2.poo.utilidades.InfoRecursoLocalInterfaz;
  * @version Versión 1.1 Mayo 2023
  * @author  Mario Rodríguez Ventura
  */
-public class RecursoLocal implements InfoRecursoLocalInterfaz, Comparable<RecursoLocal>{
+public class RecursoLocal implements InfoRecursoLocalInterfaz{
   
   private int numAccesos;
   private int numBytes;

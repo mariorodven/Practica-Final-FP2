@@ -1,6 +1,6 @@
 package fp2.poo.pfpNVT2454;
 import fp2.poo.utilidades.InfoRecursoLocalInterfaz;
-import fp2.poo.pfpNVT2454.Info;
+
 
 public class InfoRecursoLocal extends Info implements InfoRecursoLocalInterfaz{
   private int numBytes;

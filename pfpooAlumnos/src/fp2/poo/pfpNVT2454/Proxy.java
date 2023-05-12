@@ -6,6 +6,7 @@ import fp2.poo.utilidades.RecursoLocalInterfaz;
 import fp2.poo.utilidades.Excepciones.OperacionNoPermitidaExcepcion;
 import fp2.poo.utilidades.SolicitudInterfaz;
 import fp2.poo.utilidades.URLBloqueadaInterfaz;
+import fp2.poo.pfpNVT2454.RecursoLocal;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -39,14 +40,17 @@ public class Proxy extends ProxyAbstracta{
   }
 
 	public void procesaSolicitudesDelCliente() throws OperacionNoPermitidaExcepcion{
-
+    
   }
 
   public void muestraURLBloqueadas(){
-
+    for(URLBloqueadaInterfaz cont : urlbloqueadas){
+      System.out.println("URL bloqueada: " + cont.getURLBloqueada() + " con " + cont.getNumAccesos() + " accesos");
+    }
   }
   public void muestraSolicitudes(){
-
+    for(SolicitudInterfaz cont : solicitudes)
+      System.out.println(cont.getProtocolo() + " " + cont.getURL().getHost() + cont.getPuerto() + cont.getDirectorio() + cont.getObjeto());
   }
 
   public void muestraRecursos(){
@@ -54,7 +58,7 @@ public class Proxy extends ProxyAbstracta{
   }
 
   public void ordenarRecursosPorAccesos(){
-    
+    Collections.sort(copiaLocal, new OrdenacionRecursosPorAccesos());
   }
 
 
