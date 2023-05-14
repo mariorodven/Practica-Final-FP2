@@ -106,7 +106,7 @@ public abstract class ProxyAbstracta {
 	    String file = url.getFile();
 	    int    pos  = file.lastIndexOf("/");
             String camino   = file.substring(pos + 1, file.length());
- 			
+            
             URLConnection yc = url.openConnection();
             BufferedInputStream in = new BufferedInputStream(yc.getInputStream());
             int valor;  
