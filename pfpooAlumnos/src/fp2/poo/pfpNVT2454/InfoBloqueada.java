@@ -9,27 +9,9 @@ import java.net.URL;
  * @version version 1.1 Mayo 2023
  * @author Mario Rodríguez Ventura
  */
-public class InfoBloqueada implements InfoBloqueadaInterfaz{
+public class InfoBloqueada extends Info implements InfoBloqueadaInterfaz{
   
-  private int numAccesos;
   private URL urlBloqueada;
-  
-  /**
-   * Método que fija un valor para numAccesos 
-   * @param numAccesos El número de accesos 
-   * @return void
-   */
-  public void setNumAccesos(int numAccesos){
-    this.numAccesos=numAccesos;
-  }  
-  
-  /**
-   * Metodo que devuelve el numero de accesos
-   * @return int
-   */
-  public int getNumAccesos(){
-    return this.numAccesos;
-  }
   
   /**
    * Método que fija una urlBloqueada 

@@ -44,7 +44,7 @@ public class Principal {
         } catch (OperacionNoPermitidaExcepcion  e) {
             System.err.println("Fichero inexistente");
         } catch(ErrorEnLosArgumentosDeEntradaExcepcion e){
-           System.err.println("Numero de argumentos incorrecto");        
+            System.err.println("Numero de argumentos incorrecto");        
         }
     }
 }

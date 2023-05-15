@@ -1,7 +1,11 @@
 package fp2.poo.pfpNVT2454;
 import fp2.poo.utilidades.InfoRecursoLocalInterfaz;
 
-
+/**
+ * Descripción: Una clase que sirve para almacenar la informacion del RecursoLocal
+ * @version 6.9
+ * @author Mario Rodríguez Ventura
+ */
 public class InfoRecursoLocal extends Info implements InfoRecursoLocalInterfaz{
   private int numBytes;
 
