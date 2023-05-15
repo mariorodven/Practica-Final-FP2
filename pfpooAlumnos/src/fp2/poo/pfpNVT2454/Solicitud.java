@@ -23,7 +23,7 @@ public class Solicitud implements SolicitudInterfaz {
   private String directorio;
   private String recurso;
   //URL(String protocol, String host, int port, String file)
-  private URL urlSoicitud ;
+  private URL urlSolicitud ;
   
   /**
    * Constructor de la clase Solicitud
@@ -41,7 +41,7 @@ public class Solicitud implements SolicitudInterfaz {
     this.puerto=puerto;
     this.objeto=objeto;
     try {
-      this.urlSoicitud=new URL(protocolo, maquina, puerto, objeto);
+      this.urlSolicitud=new URL(protocolo, maquina, puerto, objeto);
     } catch (MalformedURLException e) {
       System.out.println(e);
     }
@@ -52,7 +52,7 @@ public class Solicitud implements SolicitudInterfaz {
    * @return URL 
    */
   public URL getURL(){
-    return this.urlSoicitud;
+    return this.urlSolicitud;
   }
 
   /**
@@ -61,7 +61,7 @@ public class Solicitud implements SolicitudInterfaz {
    * @return void
    */
   public void setNumEntrada(int numEntrada){
-   this.numEntrada = numEntrada; 
+    this.numEntrada = numEntrada; 
   }
 
   /**

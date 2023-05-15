@@ -12,12 +12,11 @@ import fp2.poo.utilidades.URLBloqueadaInterfaz;
 public class URLBloqueada extends InfoBloqueada implements URLBloqueadaInterfaz{
   
   //URL(String protocol, String host, int port, String file)
-  protected final String sampleFile = "http://trajano.us.es:80/graficos/esi.gif";
   private URL URLBloqueada ;
 
   /**
    * Constructor de la clase URLBloqueada que da un valor por defecto
-   * @param archivo Archivo de la URL bloqueada
+   * @param url URL a bloqueada
    */
   public URLBloqueada(String url){
     try {

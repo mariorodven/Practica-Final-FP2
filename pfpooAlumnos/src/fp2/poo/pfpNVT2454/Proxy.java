@@ -41,12 +41,41 @@ public class Proxy extends ProxyAbstracta{
 
 	public void procesaSolicitudesDelCliente() throws OperacionNoPermitidaExcepcion{
     
+    for(SolicitudInterfaz lasSolicitudes : solicitudes){
+      for(URLBloqueadaInterfaz lasURLBloqueadas : urlbloqueadas){
+        if(lasSolicitudes.getURL().getHost()==lasURLBloqueadas.getURLBloqueadaAsObject().getHost()){
+          System.out.println("BLOCK" + lasSolicitudes.getURL().getHost());
+        }
+      }
+    }
+    
+    for(SolicitudInterfaz lasSolicitudes : solicitudes){
+      for(RecursoLocalInterfaz recursos : copiaLocal){
+        if(lasSolicitudes.getURL().getHost()==recursos.getURLAsObject().getHost()){
+          System.out.println("PROXY " + lasSolicitudes.getURL().getHost());
+        } else{
+          switch(guardarRecursoEnLocal(lasSolicitudes.getURL())){
+            case(-1):
+              System.out.println("NO_OK " + lasSolicitudes.getURL().getHost());
+              break;
+
+            default:
+              System.out.println("_OK__ " + lasSolicitudes.getURL().getHost());
+              RecursoLocalInterfaz nuevoRecurso = new RecursoLocal(1, guardarRecursoEnLocal(lasSolicitudes.getURL()));
+              copiaLocal.add(nuevoRecurso);
+              break;
+            
+          }
+        }
+      }
+    }
+
+        
   }
 
   public void muestraURLBloqueadas(){
-    for(URLBloqueadaInterfaz cont : urlbloqueadas){
+    for(URLBloqueadaInterfaz cont : urlbloqueadas)
       System.out.println("URL bloqueada: " + cont.getURLBloqueada() + " con " + cont.getNumAccesos() + " accesos");
-    }
   }
   public void muestraSolicitudes(){
     for(SolicitudInterfaz cont : solicitudes)
@@ -54,11 +83,12 @@ public class Proxy extends ProxyAbstracta{
   }
 
   public void muestraRecursos(){
-
+    for(RecursoLocalInterfaz recursito : copiaLocal)
+      System.out.println("Recurso local, URL: " + recursito.getURL() + "con " + recursito.getNumAccesos() + " y " + recursito.getNumBytes());
   }
 
   public void ordenarRecursosPorAccesos(){
-    Collections.sort(copiaLocal, new OrdenacionRecursosPorAccesos());
+    Collections.sort(copiaLocal, new OrdenacionRecursoPorAccesos());
   }
 
 

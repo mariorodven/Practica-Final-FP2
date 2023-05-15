@@ -1,7 +1,10 @@
 package fp2.poo.pfpNVT2454;
 
-import fp2.poo.utilidades.InfoRecursoLocalInterfaz;
+import fp2.poo.utilidades.RecursoLocalInterfaz;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.charset.MalformedInputException;
 
 /**
  * Descripcion: Esta es la clase que contiene los métodos
@@ -10,11 +13,11 @@ import fp2.poo.utilidades.InfoRecursoLocalInterfaz;
  * @version Versión 1.1 Mayo 2023
  * @author  Mario Rodríguez Ventura
  */
-public class RecursoLocal implements InfoRecursoLocalInterfaz{
+public class RecursoLocal implements RecursoLocalInterfaz{
   
   private int numAccesos;
   private int numBytes;
-
+  private URL urlLocal;
   /**
    * Constructor de la clase RecursoLocal que da un valor inicial a los 
    * atributos de la clase.
@@ -58,5 +61,21 @@ public class RecursoLocal implements InfoRecursoLocalInterfaz{
    */
   public void setNumBytes(int numBytes){
     this.numBytes=numBytes;
+  }
+
+  public void   setURL( String url ) throws MalformedURLException{
+    try {
+      this.urlLocal = new URL(url);
+    } catch (Exception e) {
+      throw new MalformedURLException("Malformed URL");
+    }
+  }
+
+  public String getURL(){
+    return this.urlLocal.getHost();
+  }
+
+  public URL  getURLAsObject(){
+    return this.urlLocal;
   }
 }
