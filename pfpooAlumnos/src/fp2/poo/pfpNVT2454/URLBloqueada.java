@@ -40,7 +40,7 @@ public class URLBloqueada extends InfoBloqueada implements URLBloqueadaInterfaz{
    * @return String
    */
   public String getURLBloqueada(){
-    return this.URLBloqueada.getHost();
+    return this.URLBloqueada.toString();
   }
   
   /**

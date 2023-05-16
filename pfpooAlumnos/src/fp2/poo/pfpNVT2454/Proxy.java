@@ -68,10 +68,11 @@ import java.util.List;
    * @return void
    */
 	public void procesaSolicitudesDelCliente() throws OperacionNoPermitidaExcepcion{
+    
     for(SolicitudInterfaz lasSolicitudes : this.solicitudes){
       for(URLBloqueadaInterfaz lasURLBloqueadas : this.urlbloqueadas){
-        if(lasSolicitudes.getURL().getHost()==lasURLBloqueadas.getURLBloqueadaAsObject().getHost()){
-          System.out.println("BLOCK" + lasSolicitudes.getURL().getHost());
+        if(lasSolicitudes.getURL().toString().equals(lasURLBloqueadas.getURLBloqueadaAsObject().toString())){
+          System.out.println("BLOCK" + lasSolicitudes.getURL().toString());
           lasURLBloqueadas.setNumAccesos(lasURLBloqueadas.getNumAccesos()+1);
         }
       }
@@ -79,34 +80,33 @@ import java.util.List;
     
     for(SolicitudInterfaz lasSolicitudes : this.solicitudes){
       for(RecursoLocalInterfaz recursos : this.copiaLocal){
-        if(lasSolicitudes.getURL().getHost()==recursos.getURLAsObject().getHost()){
-          System.out.println("PROXY " + lasSolicitudes.getURL().getHost());
+        if(lasSolicitudes.getURL().toString().equals(recursos.getURLAsObject().toString())){
+          System.out.println("PROXY " + lasSolicitudes.getURL().toString());
           recursos.setNumAccesos(recursos.getNumAccesos()+1);
-        } else{
-          switch(guardarRecursoEnLocal(lasSolicitudes.getURL())){
-            case(-1):
-              System.out.println("NO_OK " + lasSolicitudes.getURL().getHost());
-              break;
-
-            default:
-              System.out.println("_OK__ " + lasSolicitudes.getURL().getHost());
-              RecursoLocalInterfaz nuevoRecurso = new RecursoLocal(1, guardarRecursoEnLocal(lasSolicitudes.getURL()));
-              copiaLocal.add(nuevoRecurso);
-              break;
-            
           }
         }
       }
-    }        
-  }
+    for(SolicitudInterfaz lasSolicitudes : this.solicitudes){
+      //System.out.println(guardarRecursoEnLocal(lasSolicitudes.getURL()));
+      if(guardarRecursoEnLocal(lasSolicitudes.getURL())!=-1){
+        System.out.println("_OK__ " + lasSolicitudes.getURL().toString());
+        RecursoLocalInterfaz nuevoRecurso = new RecursoLocal(1, guardarRecursoEnLocal(lasSolicitudes.getURL()), lasSolicitudes.getURL());
+        copiaLocal.add(1, nuevoRecurso);
+      } else {
+        System.out.println("NO_OK " + lasSolicitudes.getURL().toString());
+      }
+    }
+  }        
+  
 
   /**
   * Método que muestra por pantalla las URL bloqueadas por el proxy
   * @return void
   */
   public void muestraURLBloqueadas(){
-    for(URLBloqueadaInterfaz cont : urlbloqueadas)
-      System.out.println("URL bloqueada: " + cont.getURLBloqueada() + " con " + cont.getNumAccesos() + " accesos");
+    System.out.println("\nURL bloqueadas: ");
+    for(URLBloqueadaInterfaz cont : this.urlbloqueadas)
+      System.out.println(cont.getURLBloqueada() + " con " + cont.getNumAccesos() + " accesos");
   }
 
   /**
@@ -114,8 +114,9 @@ import java.util.List;
    * @return void
    */
   public void muestraSolicitudes(){
-    for(SolicitudInterfaz cont : solicitudes)
-      System.out.println(cont.getProtocolo() + " " + cont.getURL().getHost() + cont.getPuerto() + cont.getDirectorio() + cont.getObjeto());
+    System.out.println("\nSolicitudes: ");
+    for(SolicitudInterfaz cont : this.solicitudes)
+      System.out.println(cont.getURL().toString());
   }
 
   /**
@@ -123,8 +124,9 @@ import java.util.List;
    * @return void
    */
   public void muestraRecursos(){
-    for(RecursoLocalInterfaz recursito : copiaLocal)
-      System.out.println("Recurso local, URL: " + recursito.getURL() + "con " + recursito.getNumAccesos() + " y " + recursito.getNumBytes());
+    System.out.println("Recursos locales: ");
+    for(RecursoLocalInterfaz recursito : this.copiaLocal)
+      System.out.println(recursito.getURL() + "con " + recursito.getNumAccesos() + " y " + recursito.getNumBytes());
   }
 
   /**

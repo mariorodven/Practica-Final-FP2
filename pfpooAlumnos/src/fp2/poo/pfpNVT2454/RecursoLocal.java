@@ -24,9 +24,10 @@ public class RecursoLocal implements RecursoLocalInterfaz{
    * @param numAccesos Parametro que cuenta el numero de accesos.
    * @param numBytes Parámetro que cuenta el numero de Bytes de un recurso.
    */
-  public RecursoLocal(int numAccesos, int numBytes){
+  public RecursoLocal(int numAccesos, int numBytes, URL urlSolicitud){
     this.numAccesos = numAccesos;
     this.numBytes = numBytes;
+    this.urlLocal = urlSolicitud;
   }
 
   /**
@@ -72,7 +73,7 @@ public class RecursoLocal implements RecursoLocalInterfaz{
   }
 
   public String getURL(){
-    return this.urlLocal.getHost();
+    return this.urlLocal.toString();
   }
 
   public URL  getURLAsObject(){
