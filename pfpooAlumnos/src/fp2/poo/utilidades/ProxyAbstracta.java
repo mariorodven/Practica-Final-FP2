@@ -121,6 +121,7 @@ public abstract class ProxyAbstracta {
         }catch(MalformedURLException e){
             return -1;             
         }catch(IOException e){ 
+            System.out.println(e);
             return -1;      
         }                      
         return contadorDeBytes;         

@@ -22,120 +22,128 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
-
 /**
- * Descripción: La clase mas importante, esta crea tres listas, una de URLs bloqueadas, otra 
- * con los recursos locales pertinentes y otra con las solicitudes, en torno a estas listas 
+ * Descripción: La clase mas importante, esta crea tres listas, una de URLs
+ * bloqueadas, otra
+ * con los recursos locales pertinentes y otra con las solicitudes, en torno a
+ * estas listas
  * el resto de clases toma sentido
+ * 
  * @author Mario Rodríguez Ventura
  * @version 404 Mayo 2023
  */
 
-  public class Proxy extends ProxyAbstracta{
-  
+public class Proxy extends ProxyAbstracta {
+
   private List<URLBloqueadaInterfaz> urlbloqueadas = new ArrayList<URLBloqueadaInterfaz>();
-  private List<SolicitudInterfaz> solicitudes = new ArrayList<SolicitudInterfaz> ();
-  private List<RecursoLocalInterfaz> copiaLocal = new ArrayList<RecursoLocalInterfaz> ();
-  
+  private List<SolicitudInterfaz> solicitudes = new ArrayList<SolicitudInterfaz>();
+  private List<RecursoLocalInterfaz> copiaLocal = new ArrayList<RecursoLocalInterfaz>();
+
   /**
    * Constructor de la clase Proxy, establece los archivos de entrada
+   * 
    * @param nombreFicheroConf
    * @param nombreFicheroSolicitudes
    */
-  
-  public Proxy(String nombreFicheroConf, String nombreFicheroSolicitudes)throws OperacionNoPermitidaExcepcion{
-    
+
+  public Proxy(String nombreFicheroConf, String nombreFicheroSolicitudes) throws OperacionNoPermitidaExcepcion {
+
     LecturaConfiguracion lecturaConf = new LecturaConfiguracion(nombreFicheroConf);
-    
-    while (lecturaConf.hasNext()){
-      URLBloqueadaInterfaz urlBloqueda = lecturaConf.next( );
+
+    while (lecturaConf.hasNext()) {
+      URLBloqueadaInterfaz urlBloqueda = lecturaConf.next();
       urlbloqueadas.add(urlBloqueda);
     }
 
-    LecturaSolicitudesDeEntrada lectura = new LecturaSolicitudesDeEntrada( nombreFicheroSolicitudes );
-    while (lectura.hasNext()){
+    LecturaSolicitudesDeEntrada lectura = new LecturaSolicitudesDeEntrada(nombreFicheroSolicitudes);
+    while (lectura.hasNext()) {
       SolicitudInterfaz solicitud = lectura.next();
-      solicitudes.add ( solicitud );
+      solicitudes.add(solicitud);
     }
   }
 
   /**
-   * Método que procesa las solicitudes del Proxy y muestra por pantalla Block si esta bloqueada,
-   * Proxy si no esta bloqueada y esta en el proxy, _OK__ si no esta bloqueada ni en el proxy pero
+   * Método que procesa las solicitudes del Proxy y muestra por pantalla Block si
+   * esta bloqueada,
+   * Proxy si no esta bloqueada y esta en el proxy, _OK__ si no esta bloqueada ni
+   * en el proxy pero
    * si está en internet y NO_OK si no esta en el proxy y tempoco esta en la web
+   * 
    * @return void
    */
-	public void procesaSolicitudesDelCliente() throws OperacionNoPermitidaExcepcion{
-    
-    for(SolicitudInterfaz lasSolicitudes : this.solicitudes){
-      for(URLBloqueadaInterfaz lasURLBloqueadas : this.urlbloqueadas){
-        if(lasSolicitudes.getURL().toString().equals(lasURLBloqueadas.getURLBloqueadaAsObject().toString())){
-          System.out.println("BLOCK" + lasSolicitudes.getURL().toString());
-          lasURLBloqueadas.setNumAccesos(lasURLBloqueadas.getNumAccesos()+1);
+  public void procesaSolicitudesDelCliente() {
+    List<URL> yaBloqueadas = new ArrayList<URL>();
+    List<URL> yaAlmacenadas = new ArrayList<>();
+
+    for(SolicitudInterfaz solicitud:this.solicitudes){
+      for(URLBloqueadaInterfaz bloqueadas:this.urlbloqueadas){
+        if(solicitud.getURL().equals(bloqueadas.getURLBloqueadaAsObject()) && !yaBloqueadas.contains(solicitud.getURL())){
+          System.out.println("BLOCK " + bloqueadas.getURLBloqueadaAsObject());
+          bloqueadas.setNumAccesos(bloqueadas.getNumAccesos()+1);
+          yaBloqueadas.add(bloqueadas.getURLBloqueadaAsObject());
+        }
+      }      
+      for(RecursoLocalInterfaz recurso : this.copiaLocal){
+        if(solicitud.getURL().equals(recurso.getURLAsObject()) && !yaAlmacenadas.contains(solicitud.getURL())){
+          System.out.println("PROXY " + solicitud.getURL());
+          System.out.println(recurso.getNumAccesos());
+          recurso.setNumAccesos(recurso.getNumAccesos()+1);
+          System.out.println(recurso.getNumAccesos()); 
+          yaAlmacenadas.add(solicitud.getURL());
         }
       }
-    }
-    
-    for(SolicitudInterfaz lasSolicitudes : this.solicitudes){
-      for(RecursoLocalInterfaz recursos : this.copiaLocal){
-        if(lasSolicitudes.getURL().toString().equals(recursos.getURLAsObject().toString())){
-          System.out.println("PROXY " + lasSolicitudes.getURL().toString());
-          recursos.setNumAccesos(recursos.getNumAccesos()+1);
-          }
-        }
-      }
-    for(SolicitudInterfaz lasSolicitudes : this.solicitudes){
-      //System.out.println(guardarRecursoEnLocal(lasSolicitudes.getURL()));
-      if(guardarRecursoEnLocal(lasSolicitudes.getURL())!=-1){
-        System.out.println("_OK__ " + lasSolicitudes.getURL().toString());
-        RecursoLocalInterfaz nuevoRecurso = new RecursoLocal(1, guardarRecursoEnLocal(lasSolicitudes.getURL()), lasSolicitudes.getURL());
-        copiaLocal.add(1, nuevoRecurso);
-      } else {
-        System.out.println("NO_OK " + lasSolicitudes.getURL().toString());
+      if(guardarRecursoEnLocal(solicitud.getURL())!=-1 && !yaAlmacenadas.contains(solicitud.getURL()) && !yaBloqueadas.contains(solicitud.getURL())){
+        System.out.println("_OK__ " + solicitud.getURL());
+        copiaLocal.add(new RecursoLocal(1, guardarRecursoEnLocal(solicitud.getURL()), solicitud.getURL()));
+      } else if(guardarRecursoEnLocal(solicitud.getURL())==-1 && !yaAlmacenadas.contains(solicitud.getURL()) && !yaBloqueadas.contains(solicitud.getURL())){
+        System.out.println("NO_OK " + solicitud.getURL());
       }
     }
-  }        
-  
+  }
 
   /**
-  * Método que muestra por pantalla las URL bloqueadas por el proxy
-  * @return void
-  */
-  public void muestraURLBloqueadas(){
+   * Método que muestra por pantalla las URL bloqueadas por el proxy
+   * 
+   * @return void
+   */
+  public void muestraURLBloqueadas() {
     System.out.println("\nURL bloqueadas: ");
-    for(URLBloqueadaInterfaz cont : this.urlbloqueadas)
-      System.out.println(cont.getURLBloqueada() + " con " + cont.getNumAccesos() + " accesos");
+    for (URLBloqueadaInterfaz cont : this.urlbloqueadas)
+      System.out.println(cont.getNumAccesos() + " " + cont.getURLBloqueadaAsObject().toString());
   }
 
   /**
    * Método que muestra por pantalla las solicitudes
+   * 
    * @return void
    */
-  public void muestraSolicitudes(){
+  public void muestraSolicitudes() {
     System.out.println("\nSolicitudes: ");
-    for(SolicitudInterfaz cont : this.solicitudes)
+    for (SolicitudInterfaz cont : this.solicitudes)
       System.out.println(cont.getURL().toString());
   }
 
   /**
    * Método que muestra por pantalla los recursos del Proxy
+   * 
    * @return void
    */
-  public void muestraRecursos(){
-    System.out.println("Recursos locales: ");
-    for(RecursoLocalInterfaz recursito : this.copiaLocal)
-      System.out.println(recursito.getURL() + "con " + recursito.getNumAccesos() + " y " + recursito.getNumBytes());
+  public void muestraRecursos() {
+    System.out.println("\nRecursos locales: ");
+    for (RecursoLocalInterfaz recursito : this.copiaLocal)
+      System.out.println(recursito.getURLAsObject().toString());
   }
 
   /**
-   * Método que ordena los recursos en funcion del numero de accesos de menor a mayor
+   * Método que ordena los recursos en funcion del numero de accesos de menor a
+   * mayor
+   * 
    * @return void
    */
-  public void ordenarRecursosPorAccesos(){
+  public void ordenarRecursosPorAccesos() {
     Collections.sort(copiaLocal, new OrdenacionRecursoPorAccesos());
   }
-
-
 }
