@@ -156,4 +156,20 @@ public class Solicitud implements SolicitudInterfaz {
   public String getObjeto(){
     return this.objeto;
   }
+
+  /**
+   * Método que devuelve la maquina
+   * @return String
+   */
+  public String getMaquina(){
+    return this.maquina;
+  }
+
+  /**
+   * Método que establece una maquina
+   * @param maquina
+   */
+  public void setMaquina(String maquina){
+    this.maquina = maquina;
+  }
 }

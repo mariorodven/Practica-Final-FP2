@@ -10,15 +10,12 @@ import java.net.URL;
  * @author Mario Rodríguez Ventura
  */
 public class InfoBloqueada extends Info implements InfoBloqueadaInterfaz{
-  
-  private URL urlBloqueada;
-  
+    
   /**
    * Método que fija una urlBloqueada 
    * @param urlBloqueada Objeto de Url 
    * @return void
    */
-  public void setUrlBloqueada(URL urlBloqueada){
-    this.urlBloqueada=urlBloqueada;   
+  public void setUrlBloqueada(URL urlBloqueada){   
   }
 }

@@ -3,13 +3,13 @@ package fp2.poo.pfpNVT2454;
 import fp2.poo.utilidades.InfoInterfaz;
     
 
+
 /**
  * Descripción: Esta clase contiene los get/set 
  * asociados a los numeros de accesos
  * @version version 1.1 Mayo 2023
  * @author Mario Rodríguez Ventura
  */
-
 public class Info implements InfoInterfaz{
   
   private int numAccesos;
