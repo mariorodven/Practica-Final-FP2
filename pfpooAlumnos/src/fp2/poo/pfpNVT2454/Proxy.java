@@ -37,7 +37,6 @@ public class Proxy extends ProxyAbstracta {
    * @param nombreFicheroConf
    * @param nombreFicheroSolicitudes
    */
-
   public Proxy(String nombreFicheroConf, String nombreFicheroSolicitudes) throws OperacionNoPermitidaExcepcion {
 
     LecturaConfiguracion lecturaConf = new LecturaConfiguracion(nombreFicheroConf);
@@ -120,7 +119,6 @@ public class Proxy extends ProxyAbstracta {
 
   /**
    * Método que muestra por pantalla los recursos del Proxy
-   * 
    * @return void
    */
   public void muestraRecursos() {
@@ -130,8 +128,7 @@ public class Proxy extends ProxyAbstracta {
 
   /**
    * Método que ordena los recursos en funcion del numero de accesos de menor a
-   * mayor
-   * 
+   * mayor 
    * @return void
    */
   public void ordenarRecursosPorAccesos() {
