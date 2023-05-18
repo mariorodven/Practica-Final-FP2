@@ -37,6 +37,7 @@ public class Principal {
 			proxy.procesaSolicitudesDelCliente();  
 			proxy.muestraURLBloqueadas();
 			proxy.muestraSolicitudes();
+            System.out.println("\nRecursos locales");
 			proxy.muestraRecursos();	
 			proxy.ordenarRecursosPorAccesos();
 			System.out.println("Recursos locales despues de ordenacion.");

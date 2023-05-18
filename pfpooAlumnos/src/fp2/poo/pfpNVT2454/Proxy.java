@@ -78,20 +78,23 @@ public class Proxy extends ProxyAbstracta {
     List<URL> yaBloqueadas = new ArrayList<URL>();
     List<URL> yaAlmacenadas = new ArrayList<>();
 
+    System.out.println(" ");
+
     for(SolicitudInterfaz solicitud:this.solicitudes){
       for(URLBloqueadaInterfaz bloqueadas:this.urlbloqueadas){
-        if(solicitud.getURL().equals(bloqueadas.getURLBloqueadaAsObject()) && !yaBloqueadas.contains(solicitud.getURL())){
-          System.out.println("BLOCK " + bloqueadas.getURLBloqueadaAsObject());
-          bloqueadas.setNumAccesos(bloqueadas.getNumAccesos()+1);
+        if(solicitud.getURL().equals(bloqueadas.getURLBloqueadaAsObject())){
+          int nuevoAccesos = bloqueadas.getNumAccesos()+1;
+          bloqueadas.setNumAccesos(nuevoAccesos);
+          if(!yaBloqueadas.contains(solicitud.getURL()))
+            System.out.println("BLOCK " + bloqueadas.getURLBloqueadaAsObject());  
           yaBloqueadas.add(bloqueadas.getURLBloqueadaAsObject());
         }
       }      
       for(RecursoLocalInterfaz recurso : this.copiaLocal){
-        if(solicitud.getURL().equals(recurso.getURLAsObject()) && !yaAlmacenadas.contains(solicitud.getURL())){
-          System.out.println("PROXY " + solicitud.getURL());
-          System.out.println(recurso.getNumAccesos());
-          recurso.setNumAccesos(recurso.getNumAccesos()+1);
-          System.out.println(recurso.getNumAccesos()); 
+        if(solicitud.getURL().equals(recurso.getURLAsObject())){
+          recurso.setNumAccesos(recurso.getNumAccesos()+1); 
+          if(!yaAlmacenadas.contains(solicitud.getURL()))
+            System.out.println("PROXY " + solicitud.getURL());
           yaAlmacenadas.add(solicitud.getURL());
         }
       }
@@ -123,7 +126,7 @@ public class Proxy extends ProxyAbstracta {
   public void muestraSolicitudes() {
     System.out.println("\nSolicitudes: ");
     for (SolicitudInterfaz cont : this.solicitudes)
-      System.out.println(cont.getURL().toString());
+      System.out.println(cont.getNumEntrada() + " " + cont.getProtocolo() + " " + cont.getURL().getHost() + " " + cont.getPuerto() + " " + cont.getObjeto());
   }
 
   /**
@@ -132,9 +135,8 @@ public class Proxy extends ProxyAbstracta {
    * @return void
    */
   public void muestraRecursos() {
-    System.out.println("\nRecursos locales: ");
     for (RecursoLocalInterfaz recursito : this.copiaLocal)
-      System.out.println(recursito.getURLAsObject().toString());
+      System.out.println(recursito.getNumAccesos() + " " + recursito.getNumBytes() +  " " +recursito.getURLAsObject().toString());
   }
 
   /**
