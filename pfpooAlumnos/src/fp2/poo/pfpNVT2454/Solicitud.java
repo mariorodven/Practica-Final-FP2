@@ -11,6 +11,7 @@ import java.net.URL;
  * @version version 1.1 Mayo 2023
  * @author  Mario Rodríguez Ventura
  */
+@SuppressWarnings("deprecation")
 public class Solicitud implements SolicitudInterfaz {
   
   private int numEntrada;

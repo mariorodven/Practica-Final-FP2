@@ -4,7 +4,6 @@ import fp2.poo.utilidades.RecursoLocalInterfaz;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.MalformedInputException;
 
 /**
  * Descripcion: Esta es la clase que contiene los métodos
@@ -13,6 +12,7 @@ import java.nio.charset.MalformedInputException;
  * @version Versión 1.1 Mayo 2023
  * @author  Mario Rodríguez Ventura
  */
+@SuppressWarnings("deprecation")
 public class RecursoLocal implements RecursoLocalInterfaz{
   
   private int numAccesos;

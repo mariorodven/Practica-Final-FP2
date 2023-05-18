@@ -11,22 +11,6 @@ import fp2.poo.utilidades.ProxyAbstracta;
  */
 import fp2.poo.pfpNVT2454.Proxy;
 
-
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.net.MalformedURLException;
-
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.FileOutputStream;
-import java.io.File;
-
-import java.util.Map;
-import java.util.HashMap;
-
 public class Principal {
     public static void main(String args[]){
         

@@ -9,6 +9,7 @@ import fp2.poo.utilidades.URLBloqueadaInterfaz;
  * @author Mario Rodríguez Ventura
  * @version versión 6.9 Mayo 2023
  */
+@SuppressWarnings("deprecation")
 public class URLBloqueada extends InfoBloqueada implements URLBloqueadaInterfaz{
   
   //URL(String protocol, String host, int port, String file)

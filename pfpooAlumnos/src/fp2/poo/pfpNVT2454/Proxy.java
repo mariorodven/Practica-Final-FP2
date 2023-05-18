@@ -7,22 +7,11 @@ import fp2.poo.utilidades.RecursoLocalInterfaz;
 import fp2.poo.utilidades.Excepciones.OperacionNoPermitidaExcepcion;
 import fp2.poo.utilidades.SolicitudInterfaz;
 import fp2.poo.utilidades.URLBloqueadaInterfaz;
-import fp2.poo.pfpNVT2454.RecursoLocal;
 
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.BufferedInputStream;
-import java.io.OutputStream;
-import java.io.FileOutputStream;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 
 /**

@@ -10,13 +10,11 @@
 package fp2.poo.utilidades;
 
 import fp2.poo.utilidades.Excepciones.OperacionNoPermitidaExcepcion;
-import fp2.poo.utilidades.SolicitudInterfaz;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.BufferedInputStream;
 import java.io.OutputStream;
