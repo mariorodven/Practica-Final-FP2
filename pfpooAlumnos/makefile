@@ -15,17 +15,8 @@
 
 OPCIONES = -Xlint -encoding ISO-8859-1 -classpath ./bin  -cp ./bin -d ./bin 
 JAVADOC=javadoc
+
 	
-./jar/MainProxy.jar: ./bin/fp2/poo/principal/Principal.class \
-										 ./bin/fp2/poo/utilidades/*.class \
-										 ./bin/fp2/poo/pfpNVT2454/*.class \
-										 ./bin/fp2/poo/utilidades/Excepciones/*.class
-	jar cvfe ./jar/MainProxy.jar -C ./bin/fp2/poo/principal/Principal.class \
-														-C ./bin/fp2/poo/pfpNVT2454/* \
-														-C ./bin/fp2/poo/utilidades/Excepciones/* \
-														-C ./bin/fp2/poo/utilidades/*.class
-
-
 ./bin/fp2/poo/principal/Principal.class:\
                            ./bin/fp2/poo/utilidades/Excepciones/ErrorEnLosArgumentosDeEntradaExcepcion.class\
                            ./bin/fp2/poo/utilidades/Excepciones/OperacionNoPermitidaExcepcion.class \
@@ -158,7 +149,7 @@ ejecucion:
 ##################################################
 
 limpia: 
-	rm -rf ./copiaLocal/* /src/fp2/poo/utilidades/*.class ./src/fp2/poo/utilidades/Excepciones/*.class /src/fp2/poo/principal/*.class ./src/fp2/poo/pfpNVT2454/*.class ./bin/* ./doc/*
+	rm -rf ./jar/* ./copiaLocal/* /src/fp2/poo/utilidades/*.class ./src/fp2/poo/utilidades/Excepciones/*.class /src/fp2/poo/principal/*.class ./src/fp2/poo/pfpNVT2454/*.class ./bin/* ./doc/*
 
 
 doc: 
@@ -167,3 +158,49 @@ doc:
                  ./src/fp2/poo/pfpNVT2454/*.java \
                  ./src/fp2/poo/principal/Principal.java\
 
+	#####################################
+	#							Jar(no funciona)			#
+	#####################################
+
+./jar/MainProxy.jar: ./bin/fp2/poo/principal/Principal.class \
+										 ./bin/fp2/poo/utilidades/InfoInterfaz.class\
+										 ./bin/fp2/poo/utilidades/ProxyAbstracta.class\
+										 ./bin/fp2/poo/utilidades/SolicitudInterfaz.class\
+										 ./bin/fp2/poo/utilidades/LecturaConfiguracion.class\
+										 ./bin/fp2/poo/utilidades/URLBloqueadaInterfaz.class\
+										 ./bin/fp2/poo/utilidades/RecursoLocalInterfaz.class\
+										 ./bin/fp2/poo/utilidades/InfoBloqueadaInterfaz.class\
+										 ./bin/fp2/poo/utilidades/InfoRecursoLocalInterfaz.class\
+										 ./bin/fp2/poo/utilidades/LecturaSolicitudesDeEntrada.class\
+										 ./bin/fp2/poo/utilidades/Excepciones/OperacionNoPermitidaExcepcion.class\
+										 ./bin/fp2/poo/utilidades/Excepciones/ErrorEnLosArgumentosDeEntradaExcepcion.class\
+										 ./bin/fp2/poo/pfpNVT2454/Info.class \
+										 ./bin/fp2/poo/pfpNVT2454/InfoBloqueada.class \
+										 ./bin/fp2/poo/pfpNVT2454/InfoRecursoLocal.class \
+										 ./bin/fp2/poo/pfpNVT2454/Proxy.class \
+										 ./bin/fp2/poo/pfpNVT2454/Solicitud.class \
+										 ./bin/fp2/poo/pfpNVT2454/RecursoLocal.class \
+										 ./bin/fp2/poo/pfpNVT2454/URLBloqueada.class \
+										 ./bin/fp2/poo/pfpNVT2454/OrdenacionRecursoPorAccesos.class \
+										 ./bin/fp2/poo/utilidades/Excepciones/*.class
+	jar cvfe ./jar/MainProxy.jar fp2.poo.principal.Principal \
+														-C ./bin/fp2/poo/principal/Principal.class \
+														-C ./bin/fp2/poo/pfpNVT2454/Info.class \
+														-C ./bin/fp2/poo/pfpNVT2454/InfoBloqueada.class \
+														-C ./bin/fp2/poo/pfpNVT2454/InfoRecursoLocal.class \
+														-C ./bin/fp2/poo/pfpNVT2454/Proxy.class \
+														-C ./bin/fp2/poo/pfpNVT2454/Solicitud.class \
+														-C ./bin/fp2/poo/pfpNVT2454/RecursoLocal.class \
+														-C ./bin/fp2/poo/pfpNVT2454/URLBloqueada.class \
+										 				-C ./bin/fp2/poo/pfpNVT2454/OrdenacionRecursoPorAccesos.class \
+														-C ./bin/fp2/poo/utilidades/InfoInterfaz.class\
+														-C ./bin/fp2/poo/utilidades/ProxyAbstracta.class\
+														-C ./bin/fp2/poo/utilidades/SolicitudInterfaz.class\
+														-C ./bin/fp2/poo/utilidades/LecturaConfiguracion.class\
+														-C ./bin/fp2/poo/utilidades/URLBloqueadaInterfaz.class\
+														-C ./bin/fp2/poo/utilidades/RecursoLocalInterfaz.class\
+														-C ./bin/fp2/poo/utilidades/InfoBloqueadaInterfaz.class\
+														-C ./bin/fp2/poo/utilidades/InfoRecursoLocalInterfaz.class\
+														-C ./bin/fp2/poo/utilidades/LecturaSolicitudesDeEntrada.class\
+														-C ./bin/fp2/poo/utilidades/Excepciones/ErrorEnLosArgumentosDeEntradaExcepcion.class \
+														-C ./bin/fp2/poo/utilidades/Excepciones/OperacionNoPermitidaExcepcion.class
