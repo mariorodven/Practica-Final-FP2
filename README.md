@@ -28,6 +28,6 @@ Dentro de pfpooNVT2454 se encuentran las siguientes carpetas:
 
 ## Comandos nuevos del makefile
 
-**make limpia**: Limpia todos los archivos .class y los generados por el javadoc, ademas de los recursos descargados por el proxy.
-**make doc**: genera el javadoc.
+- **make limpia**: Limpia todos los archivos .class y los generados por el javadoc, ademas de los recursos descargados por el proxy.
+- **make doc**: genera el javadoc.
 
