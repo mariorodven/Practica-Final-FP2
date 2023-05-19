@@ -28,16 +28,15 @@ public class URLBloqueada extends InfoBloqueada implements URLBloqueadaInterfaz{
   }
 
   /**
-   * Método que define una URL bloqueada
-   * @param urlBloqueada La URL a bloquear
-   * @return void
+   * Metodo que define una URL bloqueada
+   * @param url La URL a bloquear
    */
   public void setURLBloqueada( String url ) throws MalformedURLException{
     this.URLBloqueada = new URL(url);
   }
   
   /**
-   * Método que devuelve la url bloqueada como cadena
+   * Metodo que devuelve la url bloqueada como cadena
    * @return String
    */
   public String getURLBloqueada(){
@@ -45,7 +44,7 @@ public class URLBloqueada extends InfoBloqueada implements URLBloqueadaInterfaz{
   }
   
   /**
-   * Método que devuelve la URL bloqueada como objeto
+   * Metodo que devuelve la URL bloqueada como objeto
    * @return URL
    */
   public URL getURLBloqueadaAsObject(){

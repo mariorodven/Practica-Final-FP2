@@ -2,7 +2,7 @@ package fp2.poo.pfpNVT2454;
 import fp2.poo.utilidades.InfoRecursoLocalInterfaz;
 
 /**
- * Descripción: Una clase que sirve para almacenar la informacion del RecursoLocal
+ * Desctipcion: Una clase que sirve para almacenar la informacion del RecursoLocal
  * @version 6.9
  * @author Mario Rodríguez Ventura
  */
@@ -14,16 +14,16 @@ public class InfoRecursoLocal extends Info implements InfoRecursoLocalInterfaz{
   }
 
   /**
-   * Método que establece un numero de bytes 
+   * Metodo que establece un numero de bytes 
    * @param numBytes Número de bytes
-   * @return void
+   * 
    */
   public void setNumBytes(int numBytes){
     this.numBytes=numBytes;
   }
 
   /**
-   * Método que devuelve el numero de bytes
+   * Metodo que devuelve el numero de bytes
    * @return int
    */
   public int getNumBytes(){

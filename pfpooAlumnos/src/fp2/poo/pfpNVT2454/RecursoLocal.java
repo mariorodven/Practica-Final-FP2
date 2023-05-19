@@ -31,16 +31,16 @@ public class RecursoLocal implements RecursoLocalInterfaz{
   }
 
   /**
-   * Método que establece el numero de accesos.
+   * Metodo que establece el numero de accesos.
    * @param numAccesos Número de accesos.
-   * @return void
+   * 
    */
   public void setNumAccesos(int numAccesos){
     this.numAccesos=numAccesos;
   }
 
   /**
-   * Método que devuelve el número de accesos
+   * Metodo que devuelve el número de accesos
    * @return int
    */
   public int getNumAccesos(){
@@ -48,7 +48,7 @@ public class RecursoLocal implements RecursoLocalInterfaz{
   }
 
   /**
-   * Método que devuelve el número de Bytes del recurso
+   * Metodo que devuelve el número de Bytes del recurso
    * @return int
    */
   public int getNumBytes(){
@@ -56,15 +56,18 @@ public class RecursoLocal implements RecursoLocalInterfaz{
   }
 
   /**
-   * Método que establece el número de bytes
+   * Metodo que establece el número de bytes
    * @param numBytes El numero de bytes que va a ser establecido
-   * @return void
    */
   public void setNumBytes(int numBytes){
     this.numBytes=numBytes;
   }
-
-  public void   setURL( String url ) throws MalformedURLException{
+  
+  /**
+   * Método que establece una URL a bloquear
+   * @param url URL a bloquear
+   */
+  public void setURL(String url) throws MalformedURLException{
     try {
       this.urlLocal = new URL(url);
     } catch (Exception e) {
@@ -72,10 +75,18 @@ public class RecursoLocal implements RecursoLocalInterfaz{
     }
   }
 
+  /**
+   * Método que devuelve la URL como String
+   * @return String
+   */
   public String getURL(){
     return this.urlLocal.toString();
   }
 
+  /**
+   * Método que devuelve la URL como objeto de tipo URL
+   * @return URL
+   */
   public URL  getURLAsObject(){
     return this.urlLocal;
   }

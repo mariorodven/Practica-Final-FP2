@@ -32,7 +32,7 @@ public class Solicitud implements SolicitudInterfaz {
    * @param puerto El puerto de entrada de la Solicitud
    * @param protocolo Protocolo de la solicitud(http, https)
    * @param maquina El host, puede ser por ejemplo www.us.es
-   * @param directorio Direccion del fichero
+   * @param objeto objeto de la URL
    */
   public Solicitud(int numEntrada, String protocolo, String maquina, int puerto, String objeto){
     //Asignacion por defecto
@@ -49,7 +49,7 @@ public class Solicitud implements SolicitudInterfaz {
   }
   
   /**
-   * Método que devuelve la URL
+   * Metodo que devuelve la URL
    * @return URL 
    */
   public URL getURL(){
@@ -57,16 +57,15 @@ public class Solicitud implements SolicitudInterfaz {
   }
 
   /**
-   * Método que establece un numero de entrada 
+   * Metodo que establece un numero de entrada 
    * @param numEntrada El numero de entrada en cuestión 
-   * @return void
    */
   public void setNumEntrada(int numEntrada){
     this.numEntrada = numEntrada; 
   }
 
   /**
-   * Método que devuelve el actual numero de entradas
+   * Metodo que devuelve el actual numero de entradas
    * @return int
    */
   public int getNumEntrada(){
@@ -74,16 +73,15 @@ public class Solicitud implements SolicitudInterfaz {
   }
 
   /**
-   * Método que establece un protocolo para la solicitud
+   * Metodo que establece un protocolo para la solicitud
    * @param protocolo El protocolo en cuestión (http o https)
-   * @return void
    */
   public void setProtocolo(String protocolo){
     this.protocolo=protocolo; 
   }
 
   /**
-   * Método que devuelve el protocolo del Proxy 
+   * Metodo que devuelve el protocolo del Proxy 
    * @return String
    */
   public String getProtocolo(){
@@ -91,33 +89,31 @@ public class Solicitud implements SolicitudInterfaz {
   }
 
   /**
-   * Método que establece un recurso para el Proxy
+   * Metodo que establece un recurso para el Proxy
    * @param recurso EL recurso en cuestión para el Proxy
-   * @return void
    */
   public void setRecurso(String recurso){
     this.recurso = recurso;
   }
   
   /**
-   * Método que devuelve el recurso del Proxy
-   * @return void
+   * Metodo que devuelve el recurso del Proxy
+   * @return String
    */
   public String getRecurso(){
     return this.recurso;
   }
 
   /**
-   * Método que establece un puerto para la solicitud
+   * Metodo que establece un puerto para la solicitud
    * @param puerto Puerto de entrada de la solicitud, o bien 80 o bien 443
-   * @return void
    */
   public void setPuerto(int puerto){
     this.puerto = puerto;
   }
 
   /**
-   * Método que devuelve el puerto de la solicitud
+   * Metodo que devuelve el puerto de la solicitud
    * @return int
    */
   public int getPuerto(){
@@ -125,15 +121,15 @@ public class Solicitud implements SolicitudInterfaz {
   }
   
   /**
-   * Método que establece un directorio
-   * @return String
+   * Metodo que establece un directorio
+   * @param directorio Directorio 
    */
   public void setDirectorio(String directorio){
     this.directorio = directorio;
   }
 
   /**
-   * Método que devuelve el directorio de la solicitud
+   * Metodo que devuelve el directorio de la solicitud
    * @return String
    */
   public String getDirectorio(){
@@ -141,16 +137,15 @@ public class Solicitud implements SolicitudInterfaz {
   }
 
   /**
-   * Método que establece el objeto de la solicitud
+   * Metodo que establece el objeto de la solicitud
    * @param objeto El objeto en cuestión de la solicitud al Proxy
-   * @return void
    */
   public void setObjeto(String objeto){
     this.objeto = objeto;
   }
 
   /**
-   * Método que devuelve el objeto de la solicitud 
+   * Metodo que devuelve el objeto de la solicitud 
    * @return String
    */
   public String getObjeto(){
@@ -158,7 +153,7 @@ public class Solicitud implements SolicitudInterfaz {
   }
 
   /**
-   * Método que devuelve la maquina
+   * Metodo que devuelve la maquina
    * @return String
    */
   public String getMaquina(){
@@ -166,7 +161,7 @@ public class Solicitud implements SolicitudInterfaz {
   }
 
   /**
-   * Método que establece una maquina
+   * Metodo que establece una maquina
    * @param maquina
    */
   public void setMaquina(String maquina){

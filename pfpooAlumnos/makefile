@@ -1,3 +1,4 @@
+
 ###########################################################################################
 #
 #       makefile para la compilacion de la pfp de Fundamentos de Programacion II
@@ -13,6 +14,7 @@
 ###########################################################################################
 
 OPCIONES = -Xlint -encoding ISO-8859-1 -classpath ./bin  -cp ./bin -d ./bin 
+JAVADOC=javadoc
 	
 ./bin/fp2/poo/principal/Principal.class:\
                            ./bin/fp2/poo/utilidades/Excepciones/ErrorEnLosArgumentosDeEntradaExcepcion.class\
@@ -146,4 +148,12 @@ ejecucion:
 ##################################################
 
 limpia: 
-	rm -rf src/fp2/poo/pfpNVT2454/Info.class src/fp2/poo/pfpNVT2454/InfoBloqueada.class src/fp2/poo/pfpNVT2454/InfoRecursoLocal.class src/fp2/poo/pfpNVT2454/OrdenacionRecursoPorAccesos.class src/fp2/poo/pfpNVT2454/Proxy.class src/fp2/poo/pfpNVT2454/RecursoLocal.class src/fp2/poo/pfpNVT2454/Solicitud.class src/fp2/poo/pfpNVT2454/URLBloqueada.class src/fp2/poo/principal/Principal.class src/fp2/poo/utilidades/InfoBloqueadaInterfaz.class src/fp2/poo/utilidades/InfoInterfaz.class src/fp2/poo/utilidades/InfoRecursoLocalInterfaz.class src/fp2/poo/utilidades/LecturaConfiguracion.class src/fp2/poo/utilidades/LecturaSolicitudesDeEntrada.class src/fp2/poo/utilidades/ProxyAbstracta.class src/fp2/poo/utilidades/RecursoLocalInterfaz.class src/fp2/poo/utilidades/SolicitudInterfaz.class src/fp2/poo/utilidades/URLBloqueadaInterfaz.class ./bin/* ./src/fp2/poo/utilidades/Excepciones/OperacionNoPermitidaExcepcion.class ./src/fp2/poo/utilidades/Excepciones/ErrorEnLosArgumentosDeEntradaExcepcion.class ./src/fp2/poo/principal/Principal.class
+	rm -rf ./src/fp2/poo/utilidades/*.class ./src/fp2/poo/utilidades/Excepciones/*.class /src/fp2/poo/principal/*.class ./src/fp2/poo/pfpNVT2454/*.class ./bin/* ./doc/*
+
+
+doc: 
+	$(JAVADOC)  -encoding ISO-8859-1 -charset "UTF-8" -sourcepath ./src -d ./doc -classpath ./bin   \
+                 ./src/fp2/poo/utilidades/*.java \
+                 ./src/fp2/poo/pfpNVT2454/*.java \
+                 ./src/fp2/poo/principal/Principal.java\
+

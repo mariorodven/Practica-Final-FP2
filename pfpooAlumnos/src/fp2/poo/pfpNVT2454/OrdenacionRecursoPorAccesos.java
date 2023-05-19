@@ -4,13 +4,13 @@ import java.util.Comparator;
 import fp2.poo.utilidades.RecursoLocalInterfaz;
 
 /**
- * Descripción: Esta clase implementa la intefaz Comparator para ordenar una Lista de tipo RecursoLocal 
+ * Desctipcion: Esta clase implementa la intefaz Comparator para ordenar una Lista de tipo RecursoLocal 
  * @author Mario Rodríguez Ventura
  * @version 3.3
  */
 public class OrdenacionRecursoPorAccesos implements Comparator<RecursoLocalInterfaz> {
   /**
-   * Método para ordenar los recursos de menor a mayor
+   * Metodo para ordenar los recursos de menor a mayor
    * @param o1 Recurso local a comparar por numero de acceso
    * @param o2
    * @return int
