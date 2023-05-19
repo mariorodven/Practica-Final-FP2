@@ -16,6 +16,16 @@
 OPCIONES = -Xlint -encoding ISO-8859-1 -classpath ./bin  -cp ./bin -d ./bin 
 JAVADOC=javadoc
 	
+./jar/MainProxy.jar: ./bin/fp2/poo/principal/Principal.class \
+										 ./bin/fp2/poo/utilidades/*.class \
+										 ./bin/fp2/poo/pfpNVT2454/*.class \
+										 ./bin/fp2/poo/utilidades/Excepciones/*.class
+	jar cvfe ./jar/MainProxy.jar -C ./bin/fp2/poo/principal/Principal.class \
+														-C ./bin/fp2/poo/pfpNVT2454/* \
+														-C ./bin/fp2/poo/utilidades/Excepciones/* \
+														-C ./bin/fp2/poo/utilidades/*.class
+
+
 ./bin/fp2/poo/principal/Principal.class:\
                            ./bin/fp2/poo/utilidades/Excepciones/ErrorEnLosArgumentosDeEntradaExcepcion.class\
                            ./bin/fp2/poo/utilidades/Excepciones/OperacionNoPermitidaExcepcion.class \
@@ -148,7 +158,7 @@ ejecucion:
 ##################################################
 
 limpia: 
-	rm -rf ./src/fp2/poo/utilidades/*.class ./src/fp2/poo/utilidades/Excepciones/*.class /src/fp2/poo/principal/*.class ./src/fp2/poo/pfpNVT2454/*.class ./bin/* ./doc/*
+	rm -rf ./copiaLocal/* /src/fp2/poo/utilidades/*.class ./src/fp2/poo/utilidades/Excepciones/*.class /src/fp2/poo/principal/*.class ./src/fp2/poo/pfpNVT2454/*.class ./bin/* ./doc/*
 
 
 doc: 
