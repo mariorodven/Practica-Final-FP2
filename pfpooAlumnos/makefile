@@ -9,8 +9,34 @@ PRINCPAL_CLASS = Principal
 FICHEROS = configuracion00.txt solicitudes00.txt
 MAINPACKAGE = fp2.poo.principal.Principal
 
+jar: 						./bin/$(PRINCIPAL_DIR)/$(PRINCPAL_CLASS).class \
+								./bin/$(UTILIDADES)/InfoInterfaz.class \
+								./bin/$(UTILIDADES)/ProxyAbstracta.class \
+								./bin/$(UTILIDADES)/SolicitudInterfaz.class \
+								./bin/$(UTILIDADES)/LecturaConfiguracion.class \
+								./bin/$(UTILIDADES)/URLBloqueadaInterfaz.class \
+								./bin/$(UTILIDADES)/RecursoLocalInterfaz.class \
+								./bin/$(UTILIDADES)/InfoBloqueadaInterfaz.class \
+								./bin/$(UTILIDADES)/InfoRecursoLocalInterfaz.class \
+								./bin/$(UTILIDADES)/LecturaSolicitudesDeEntrada.class \
+								./bin/$(EXCEPCION1).class \
+								./bin/$(EXCEPCION2).class \
+								./bin/$(PFPOO)/Info.class \
+								./bin/$(PFPOO)/InfoBloqueada.class \
+								./bin/$(PFPOO)/InfoRecursoLocal.class \
+								./bin/$(PFPOO)/Solicitud.class \
+								./bin/$(PFPOO)/Proxy.class \
+								./bin/$(PFPOO)/RecursoLocal.class \
+								./bin/$(PFPOO)/URLBloqueada.class \
+								./bin/$(PFPOO)/OrdenacionRecursoPorAccesos.class 
+	jar cvfe ./jar/Main.jar $(MAINPACKAGE) \
+								./bin/$(PRINCIPAL_DIR)/$(PRINCPAL_CLASS).class \
+								-C ./bin/$(UTILIDADES)/ . \
+							 	-C ./bin/fp2/poo/utilidades/Excepciones/ .\
+								-C ./bin/$(PFPOO)/ . \
+	
 
-./bin/$(PRINCIPAL_DIR)/$(PRINCPAL_CLASS): ./bin/$(EXCEPCION1).class 									\
+./bin/$(PRINCIPAL_DIR)/$(PRINCPAL_CLASS).class: ./bin/$(EXCEPCION1).class 									\
 																					./bin/$(EXCEPCION2).class										\
 																					./bin/$(PFPOO)/Proxy.class 									\
 																					./src/$(PRINCIPAL_DIR)/$(PRINCPAL_CLASS).java 
@@ -134,30 +160,4 @@ doc:
                  ./src/fp2/poo/principal/Principal.java\
 
 
-./jar/Main.jar: ./bin/$(PRINCIPAL_DIR)/$(PRINCPAL_CLASS).class \
-								./bin/$(UTILIDADES)/InfoInterfaz.class \
-								./bin/$(UTILIDADES)/ProxyAbstracta.class \
-								./bin/$(UTILIDADES)/SolicitudInterfaz.class \
-								./bin/$(UTILIDADES)/LecturaConfiguracion.class \
-								./bin/$(UTILIDADES)/URLBloqueadaInterfaz.class \
-								./bin/$(UTILIDADES)/RecursoLocalInterfaz.class \
-								./bin/$(UTILIDADES)/InfoBloqueadaInterfaz.class \
-								./bin/$(UTILIDADES)/InfoRecursoLocalInterfaz.class \
-								./bin/$(UTILIDADES)/LecturaSolicitudesDeEntrada.class \
-								./bin/$(EXCEPCION1).class \
-								./bin/$(EXCEPCION2).class \
-								./bin/$(PFPOO)/Info.class \
-								./bin/$(PFPOO)/InfoBloqueada.class \
-								./bin/$(PFPOO)/InfoRecursoLocal.class \
-								./bin/$(PFPOO)/Solicitud.class \
-								./bin/$(PFPOO)/Proxy.class \
-								./bin/$(PFPOO)/RecursoLocal.class \
-								./bin/$(PFPOO)/URLBloqueada.class \
-								./bin/$(PFPOO)/OrdenacionRecursoPorAccesos.class 
-	jar cvfe ./jar/Main.jar $(MAINPACKAGE) \
-								./bin/$(PRINCIPAL_DIR)/$(PRINCPAL_CLASS).class \
-								-C ./bin/$(UTILIDADES)/ . \
-							 	-C ./bin/fp2/poo/utilidades/Excepciones/ .\
-								-C ./bin/$(PFPOO)/ . \
-	
 
